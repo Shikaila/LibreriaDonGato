@@ -1,0 +1,6 @@
+127.0.0.1 - - [10/Dec/2021:20:45:27 +0100] "GET / HTTP/1.1" 200 7800
+127.0.0.1 - - [10/Dec/2021:20:45:28 +0100] "GET /css/normalize.min.css HTTP/1.1" 200 2057
+127.0.0.1 - - [10/Dec/2021:20:45:28 +0100] "GET /css/milligram.min.css HTTP/1.1" 200 10028
+127.0.0.1 - - [10/Dec/2021:20:45:28 +0100] "GET /css/cake.css HTTP/1.1" 200 3455
+127.0.0.1 - - [10/Dec/2021:20:45:28 +0100] "GET /css/home.css HTTP/1.1" 200 1523
+127.0.0.1 - - [10/Dec/2021:20:45:28 +0100] "GET /font/cakedingbats-webfont.woff2 HTTP/1.1" 200 35456
