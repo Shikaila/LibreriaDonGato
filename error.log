@@ -1,0 +1,2 @@
+[Mon Dec 13 19:34:47.148169 2021] [php7:error] [pid 3360:tid 1848] [client ::1:56003] PHP Parse error:  syntax error, unexpected ''username'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in F:\\TFG\\LibreriaDonGato\\config\\app.php on line 298
+[Mon Dec 13 19:34:50.681128 2021] [php7:error] [pid 3360:tid 1848] [client ::1:56003] PHP Parse error:  syntax error, unexpected ''username'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in F:\\TFG\\LibreriaDonGato\\config\\app.php on line 298
