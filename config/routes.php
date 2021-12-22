@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Routes configuration.
  *
@@ -50,7 +51,8 @@ return static function (RouteBuilder $routes) {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+        //Para colocar el index princial. Debes decir q controler quieres usar y el template q vas a usar
+        $builder->connect('/', ['controller' => 'Principal', 'action' => 'home']);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
