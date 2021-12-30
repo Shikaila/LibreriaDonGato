@@ -43,11 +43,20 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-
+        
+        $idUsu = $this->request->getSession()->read("idusuario");
+        //no funciona con el isset
+        if($idUsu === null){
+            $this->request->getSession()->write("idusuario", "");
+        }
+        
         /*
          * Enable the following component for recommended CakePHP form protection settings.
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
     }
+
+
+
 }

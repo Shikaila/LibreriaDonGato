@@ -53,7 +53,8 @@ th a,
 
 /* Main */
 body {
-    background: #f5f7fa;
+    background-image: url(../img/menu/Fondo.png);
+    background-size: 100%;
 }
 .content {
     padding: 2rem;

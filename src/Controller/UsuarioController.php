@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Phinx\Db\Action\Action;
+
 /**
  * Usuario Controller
  *
@@ -11,6 +13,7 @@ namespace App\Controller;
  */
 class UsuarioController extends AppController
 {
+
     /**
      * Index method
      *
@@ -37,6 +40,37 @@ class UsuarioController extends AppController
         ]);
 
         $this->set(compact('usuario'));
+    }
+
+    public function iniciarSesion(){
+        
+        if ($this->request->is('post')) {
+            $valor = $this->request->getData();
+            if (isset($valor['correo']) && isset($valor['pass'])) {
+                $this->Flash->error('Usuario o contraseña invalidos.');
+
+            } else {
+                $usuario = $this->Usuario->find('all', [
+                    'conditions' => [
+                        $valor
+                    ],
+                ])->toArray();
+                if (empty($usuario)) {
+                    $this->Flash->error('Usuario o contraseña invalidos.');
+                } else {
+                    $this->request->getSession()->write("idusuario", $usuario[0]["idusuario"]);
+                    $this->request->getSession()->write("nombre", $usuario[0]["nombre"]);
+                    $this->Flash->success('Se inicio sesion correctamente');
+                    return $this->redirect("/home");
+                }
+            }
+        }
+        
+    }
+
+    public function cerrarSesion(){
+        $this->request->getSession()->write("idusuario","");
+        $this->redirect($this->referer());
     }
 
     /**

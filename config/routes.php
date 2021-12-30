@@ -52,7 +52,9 @@ return static function (RouteBuilder $routes) {
          * to use (in this case, templates/Pages/home.php)...
          */
         //Para colocar el index princial. Debes decir q controler quieres usar y el template q vas a usar
-        $builder->connect('/', ['controller' => 'Principal', 'action' => 'home']);
+        //Cuando pones / ahora te lleva al principal, home.
+        $builder->connect('/', ['controller' => 'Principal', 'action' => 'index']);
+        $builder->connect('/home', ['controller' => 'Principal', 'action' => 'home']);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.

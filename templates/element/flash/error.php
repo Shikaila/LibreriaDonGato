@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var array $params
@@ -8,4 +9,5 @@ if (!isset($params['escape']) || $params['escape'] !== false) {
     $message = h($message);
 }
 ?>
-<div class="message error" onclick="this.classList.add('hidden');"><?= $message ?></div>
+<div style="margin-top: 20px;" class="message error" onclick="this.classList.add('hidden');"><?= $message ?> 
+<button type="button" class="close" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div>

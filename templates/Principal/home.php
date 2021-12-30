@@ -4,6 +4,10 @@
         $this-> viewBuilder()->setLayout('ajax');
     } -->
 
+  <head>
+      <title>Inicio</title>
+  </head>
+
   <body>
       <div class="jumbotron jumbotron-fluid">
           <div class="container">

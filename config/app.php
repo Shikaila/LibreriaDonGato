@@ -292,14 +292,14 @@ return [
         'default' => [
             'className' => Connection::class,
             'driver' => Mysql::class,
-        'persistent' => false,
-        'host' => '127.0.0.1',
-	'port' => '3308',
-        'username' => 'root',
-        'password' => 'root',
-        'database' => 'libreria',
-        'encoding' => 'utf8',
-        'timezone' => 'UTC',
+            'persistent' => false,
+            'host' => '127.0.0.1',
+            'port' => '3308',
+            'username' => 'root',
+            'password' => 'root',
+            'database' => 'libreria',
+            'encoding' => 'utf8',
+            'timezone' => 'UTC',
 
             /*
              * For MariaDB/MySQL the internal default changed from utf8 to utf8mb4, aka full utf-8 support, in CakePHP 3.6
@@ -350,7 +350,7 @@ return [
             'log' => false,
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
         ],
-		
+
     ],
 
     /*
