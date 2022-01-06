@@ -23,7 +23,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 
 <body>
-    <!-- Hemos creado el menu como predeterminado (nav) -->
+    <!-- Se ha creado el menu como predeterminado (nav) -->
     <?= $this->element('menu'); ?>
     <main class="main">
         <div class="container">

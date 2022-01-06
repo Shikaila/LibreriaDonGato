@@ -6,65 +6,135 @@
 
   <head>
       <title>Inicio</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
 
   <body>
-      <div class="jumbotron jumbotron-fluid">
-          <div class="container">
-              <h1 class="display-4">A simple Blog Layout</h1>
-              <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      <div class="col-12" style=" margin-top: 2%; margin-bottom: 3%;">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" style="    border-radius: 12px;
+                width: 12px; height: 12px;">
+                  </li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1" style="    border-radius: 12px;
+                width: 12px; height: 12px;"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2" style="    border-radius: 12px;
+                width: 12px; height: 12px;"></li>
+              </ol>
+              <div class="carousel-inner">
+                  <div class="carousel-item active" style="background-image: url(/webroot/img/menu/foto1.jpg);  ">
+                      <img class="d-block w-100" style="z-index: 1; background-image: url(/webroot/img/menu/foto1.jpg);" src="/webroot/img/menu/foto1.jpg" alt="First slide">
+                      <img class="d-block w-100 col-2" style="z-index: 2; position: absolute; top: 38%; left: 10%;" src="/webroot/img/<?php echo $recomendados_top[0]['portada'] ?>" alt="First slide">
+                      <h1 class="col-7" style="z-index: 2; position: absolute; top: 45%; left: 30%;">"<?php echo $recomendados_top[0]['titulo_libro'] ?>"</h1>
+                  </div>
+                  <div class="carousel-item">
+                      <img class="d-block w-100" style="z-index: 1; background-image: url(/webroot/img/menu/foto1.jpg);" src="/webroot/img/menu/foto1.jpg" alt="Second slide">
+                      <img class="d-block w-100 col-2" style="z-index: 2; position: absolute; top: 38%; left: 10%;" src="/webroot/img/<?php echo $recomendados_top[1]['portada'] ?>" alt="Second slide">
+                      <h1 class="col-7" style="z-index: 2; position: absolute; top: 45%; left: 30%; ">"<?php echo $recomendados_top[1]['titulo_libro'] ?>"</h1>
+                  </div>
+                  <div class="carousel-item">
+                      <img class="d-block w-100" style="z-index: 1; background-image: url(/webroot/img/menu/foto1.jpg);" src="/webroot/img/menu/foto1.jpg" alt="Third slide">
+                      <img class="d-block w-100 col-2" style="z-index: 2; position: absolute; top: 38%; left: 10%;" src="/webroot/img/<?php echo $recomendados_top[2]['portada'] ?>" alt="Third slide">
+                      <h1 class="col-7" style="z-index: 2; position: absolute; top: 45%; left: 30%; ">"<?php echo $recomendados_top[2]['titulo_libro'] ?>"</h1>
+                  </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+              </a>
           </div>
       </div>
+
+
+      <div style=" position: relative; margin-left: auto; margin-right: auto; width: 55em">
+          <h1 style="text-align: center;">Querido Lector</h1>
+
+          <h5 style="text-align: justify;">Estamos muy agradecidos con ustedes por dar una oportunidad a nuestra libreria Don Gato, nos complace anunciar que oficial tienen las puertas abiertas para adentrarse en el mundo más bonito de todos, la lectura. Volviendo a la lectura en físico, que tantas aventuras nos ha dado y nos dará.</h6>
+
+            <h5 style="text-align: justify;">Librería Don Gato siempre ha estado a favor de apoyar a la literatura, se debe tener criterio propio para separar los buenos libros de los malos, y a la vez lograr que el público sienta interés por la literatura.
+Por lo que nuestro objetivo es crear una página web original, que llame la atención y que cree oportunidades para que más gente desee leer.
+</h5>
+
+<h5 style="text-align: justify; padding-bottom: 10px;">
+El objetivo principal es el comercio online de libros manteniendo la calidad de los libros vendidos para ofrecer la mejor experiencia a los usuarios.
+</h5>
+
+      </div>
+
 
       <div class="container">
 
-          <div class="row">
-              <div class="col-4">
-                  <h3 style="color: #fff;" class="bg-info text-capitalize p-1">Recent Post</h3>
-                  <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><a href="#">Cras justo odio</a></li>
-                      <li class="list-group-item"><a href="#">Dapibus ac facilisis in</a></li>
-                      <li class="list-group-item"><a href="#">Morbi leo risus</a></li>
-                      <li class="list-group-item"><a href="#">Porta ac consectetur ac</a></li>
-                      <li class="list-group-item"><a href="#">Vestibulum at eros</a></li>
-                  </ul>
-              </div>
+          <div class="row p-3">
 
-              <div class="col-8">
-                  <div class="row">
-                      <div class="list-group ">
-                          <a href="#" class="list-group-item list-group-item-action flex-column mb-2">
-                              <div class="d-flex w-100 justify-content-between">
-                                  <h5 class="mb-1">List group item heading</h5>
-                                  <small>3 days ago</small>
-                              </div>
-                              <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                              <small>Donec id elit non mi porta.</small>
-                          </a>
-                          <a href="#" class="list-group-item list-group-item-action flex-column mb-2">
-                              <div class="d-flex w-100 justify-content-between">
-                                  <h5 class="mb-1">List group item heading</h5>
-                                  <small class="text-muted">3 days ago</small>
-                              </div>
-                              <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                              <small class="text-muted">Donec id elit non mi porta.</small>
-                          </a>
-                          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                              <div class="d-flex w-100 justify-content-between">
-                                  <h5 class="mb-1">List group item heading</h5>
-                                  <small class="text-muted">3 days ago</small>
-                              </div>
-                              <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                              <small class="text-muted">Donec id elit non mi porta.</small>
-                          </a>
+              <div class="col-xs-1 col-md-4 border-left border-right rounded-left" style="background-color: #FA9983;">
+
+                  <div class="row pt-4 pb-4">
+                      <div class="col-2"></div>
+                      <img class="col-8" style="height: 300px;" src="/webroot/img/<?php echo $recomendados_bot[0]['portada'] ?>">
+                      <div class="col-2"></div>
+                  </div>
+                  <div class="row pt-4 pb-4" style="background-color: #FC896F;">
+                      <div class="col-2"></div>
+                      <h5 class="col-2" style="color: #434140; padding-top: 6px;"> <?php echo $recomendados_bot[0]['precio'] ?>€</h5>
+                      <div class="col-2"></div>
+                      <div class="col-4">
+                          <a type="button" class="float-right btn btn-outline-dark" href="/libro/ver?id=<?php echo $recomendados_bot[0]['idlibro'] ?>">
+                              <i class="fas fa-book"></i><span> Información</span></a>
                       </div>
+
                   </div>
               </div>
+
+              <div class="col-xs-1 col-md-4 " style="background-color: #FA9983;">
+                  <div class="row pt-4 pb-4">
+                      <div class="col-2"></div>
+                      <img class="col-8" style="height: 300px;" src="/webroot/img/<?php echo $recomendados_bot[1]['portada'] ?>">
+                      <div class="col-2"></div>
+                  </div>
+                  <div class="row pt-4 pb-4" style="background-color: #FC896F;">
+                      <div class="col-2"></div>
+                      <h5 class="col-2" style="color: #434140; padding-top: 6px;"> <?php echo $recomendados_bot[1]['precio'] ?>€</h5>
+                      <div class="col-2"></div>
+                      <div class="col-4">
+                          <a type="button" class="float-right btn btn-outline-dark" href="/libro/ver?id=<?php echo $recomendados_bot[1]['idlibro'] ?>">
+                              <i class="fas fa-book"></i><span> Información</span></a>
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="col-xs-1 col-md-4 border-left border-right rounded-right" style="background-color: #FA9983;">
+
+                  <div class="row pt-4 pb-4">
+                      <div class="col-2"></div>
+                      <img class="col-8" style="height: 300px;" src="/webroot/img/<?php echo $recomendados_bot[2]['portada'] ?>">
+                      <div class="col-2"></div>
+                  </div>
+                  <div class="row pt-4 pb-4" style="background-color: #FC896F;">
+                      <div class="col-2"></div>
+                      <h5 class="col-2" style="color: #434140; padding-top: 6px;"> <?php echo $recomendados_bot[2]['precio'] ?>€</h5>
+                      <div class="col-2"></div>
+                      <div class="col-4">
+                          <a type="button" class="float-right btn btn-outline-dark" href="/libro/ver?id=<?php echo $recomendados_bot[2]['idlibro'] ?>">
+                              <i class="fas fa-book"></i><span> Información</span></a>
+                      </div>
+
+                  </div>
+
+              </div>
+
           </div>
 
-      </div>
 
       </div>
+      </div>
+
       <?= $this->element('footer'); ?>
 
 

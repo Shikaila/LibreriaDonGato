@@ -58,6 +58,10 @@ class UsuarioController extends AppController
                 if (empty($usuario)) {
                     $this->Flash->error('Usuario o contraseña invalidos.');
                 } else {
+                    //Se deja guardado la variable id que se utiliza en appController y el nombre
+                    //Para poder poner en el menu el nombre del user.
+                    //rol para saber si es admin
+                    $this->request->getSession()->write("roles", $usuario[0]["roles"]);
                     $this->request->getSession()->write("idusuario", $usuario[0]["idusuario"]);
                     $this->request->getSession()->write("nombre", $usuario[0]["nombre"]);
                     $this->Flash->success('Se inicio sesion correctamente');
@@ -68,9 +72,12 @@ class UsuarioController extends AppController
         
     }
 
+    //----------------------Cerrar sesion----------------------
     public function cerrarSesion(){
         $this->request->getSession()->write("idusuario","");
-        $this->redirect($this->referer());
+        $this->request->getSession()->write("roles", "");
+        $this->request->getSession()->write("nombre", "");
+        $this->redirect("/home");
     }
 
     /**
@@ -83,12 +90,19 @@ class UsuarioController extends AppController
         $usuario = $this->Usuario->newEmptyEntity();
         if ($this->request->is('post')) {
             $usuario = $this->Usuario->patchEntity($usuario, $this->request->getData());
+            try{
             if ($this->Usuario->save($usuario)) {
-                $this->Flash->success(__('The usuario has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__('El usuario se ha guardado.'));
+                if($this->request->getSession()->read("roles") === 1){
+                    return $this->redirect(['action' => 'index']);
+                }else{
+                    return $this->redirect("/home");
+                }
             }
-            $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
+            $this->Flash->error(('El usuario no se pudo guardar, por favor vuelvalo a intentar.'));
+        } catch (\Exception $e) {
+            $this->Flash->error(('El usuario no se pudo guardar, por favor vuelvalo a intentar.'));
+        }
         }
         $this->set(compact('usuario'));
     }
@@ -109,10 +123,10 @@ class UsuarioController extends AppController
             $usuario = $this->Usuario->patchEntity($usuario, $this->request->getData());
             if ($this->Usuario->save($usuario)) {
                 $this->Flash->success(__('The usuario has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
+
         }
         $this->set(compact('usuario'));
     }

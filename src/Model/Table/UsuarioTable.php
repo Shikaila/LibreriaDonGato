@@ -66,10 +66,10 @@ class UsuarioTable extends Table
             ->notEmptyString('nombre');
 
         $validator
-            ->scalar('contraseña')
-            ->maxLength('contraseña', 45)
-            ->requirePresence('contraseña', 'create')
-            ->notEmptyString('contraseña');
+            ->scalar('contrasena')
+            ->maxLength('contrasena', 45)
+            ->requirePresence('contrasena', 'create')
+            ->notEmptyString('contrasena');
 
         $validator
             ->scalar('direccion')

@@ -4,6 +4,15 @@
  * @var \App\Model\Entity\Usuario[]|\Cake\Collection\CollectionInterface $usuario
  */
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Usuarios</title>
+</head>
+
+<body>
 <div class="usuario index content">
     <?= $this->Html->link(__('New Usuario'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Usuario') ?></h3>
@@ -28,7 +37,7 @@
                     <td><?= $this->Number->format($usuario->idusuario) ?></td>
                     <td><?= $this->Number->format($usuario->roles) ?></td>
                     <td><?= h($usuario->nombre) ?></td>
-                    <td><?= h($usuario->contraseña) ?></td>
+                    <td><?= h($usuario->contrasena) ?></td>
                     <td><?= h($usuario->direccion) ?></td>
                     <td><?= h($usuario->apellidos) ?></td>
                     <td><?= h($usuario->correo) ?></td>
@@ -54,3 +63,6 @@
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>
+</body>
+
+</html>

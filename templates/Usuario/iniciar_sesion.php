@@ -11,8 +11,8 @@
             <div class="modal-content" style="background-color: #FA9983;">
                 <div class="col-12 user-img">
                     <img src="/webroot/img/menu/gato_cesta.png" class="col-sm-12 col-md-12">
-                    <h1>Bienvenido puto</h1>
-
+                    <h1>Bienvenido, a Libreria Don Gato</h1>
+                    </br>
                 </div>
                 <form class="col-12" method="post" action="/usuario/iniciarSesion">
                     <div class="form-group" id="user-group">
@@ -24,7 +24,7 @@
                     <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Ingresar </button>
                 </form>
                 <div class="col-12 forgot" style="margin-bottom: 15px; margin-top: 15px;">
-                    <a href="#" >Crea tu cuenta "Librería Don Gato"</a>
+                    <a href="/usuario/add" >Crea tu cuenta "Librería Don Gato"</a>
                     </br>
                 </div>
             </div>

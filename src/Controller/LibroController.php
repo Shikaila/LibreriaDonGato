@@ -1,7 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Libro Controller
@@ -39,6 +41,21 @@ class LibroController extends AppController
         $this->set(compact('libro'));
     }
 
+    public function ver(){
+        $id = $this->request->getQuery("id");
+        dd($id);
+    }
+    
+    public function busqueda()
+    {
+        $busquedas = $this->request->getQuery("busqueda");
+        $busquedas = '%' . strtoupper($busquedas) . '%';
+        $connection = ConnectionManager::get('default');
+        $results = $connection->execute('SELECT * FROM libreria.libro inner join autor on (libro.id_autor = autor.idautor) 
+                                         where (UPPER(titulo_libro) LIKE :tit or UPPER(nombre) LIKE :tit);', ['tit' => $busquedas])->fetchAll('assoc');
+        
+        $this->request->getSession()->write("busqueda", $results);
+    }
     /**
      * Add method
      *
