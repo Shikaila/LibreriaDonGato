@@ -24,19 +24,25 @@
                 width: 12px; height: 12px;"></li>
               </ol>
               <div class="carousel-inner">
-                  <div class="carousel-item active" style="background-image: url(/webroot/img/menu/foto1.jpg);  ">
-                      <img class="d-block w-100" style="z-index: 1; background-image: url(/webroot/img/menu/foto1.jpg);" src="/webroot/img/menu/foto1.jpg" alt="First slide">
-                      <img class="d-block w-100 col-2" style="z-index: 2; position: absolute; top: 38%; left: 10%;" src="/webroot/img/<?php echo $recomendados_top[0]['portada'] ?>" alt="First slide">
+                  <div class="carousel-item active">
+                      <a href="/libro/ver?id=<?php echo $recomendados_top[0]['idlibro'] ?>">
+                          <img class="d-block w-100" style="z-index: 1; background-image: url(/webroot/img/menu/foto1.jpg);" src="/webroot/img/menu/foto1.jpg" alt="First slide">
+                          <img class="d-block w-100 col-2" style="z-index: 2; position: absolute; top: 38%; left: 10%;" src="/webroot/img/<?php echo $recomendados_top[0]['portada'] ?>" alt="First slide">
+                      </a>
                       <h1 class="col-7" style="z-index: 2; position: absolute; top: 45%; left: 30%;">"<?php echo $recomendados_top[0]['titulo_libro'] ?>"</h1>
                   </div>
                   <div class="carousel-item">
-                      <img class="d-block w-100" style="z-index: 1; background-image: url(/webroot/img/menu/foto1.jpg);" src="/webroot/img/menu/foto1.jpg" alt="Second slide">
-                      <img class="d-block w-100 col-2" style="z-index: 2; position: absolute; top: 38%; left: 10%;" src="/webroot/img/<?php echo $recomendados_top[1]['portada'] ?>" alt="Second slide">
+                      <a href="/libro/ver?id=<?php echo $recomendados_top[1]['idlibro'] ?>">
+                          <img class="d-block w-100" style="z-index: 1; background-image: url(/webroot/img/menu/foto1.jpg);" src="/webroot/img/menu/foto1.jpg" alt="Second slide">
+                          <img class="d-block w-100 col-2" style="z-index: 2; position: absolute; top: 38%; left: 10%;" src="/webroot/img/<?php echo $recomendados_top[1]['portada'] ?>" alt="Second slide">
+                      </a>
                       <h1 class="col-7" style="z-index: 2; position: absolute; top: 45%; left: 30%; ">"<?php echo $recomendados_top[1]['titulo_libro'] ?>"</h1>
                   </div>
                   <div class="carousel-item">
-                      <img class="d-block w-100" style="z-index: 1; background-image: url(/webroot/img/menu/foto1.jpg);" src="/webroot/img/menu/foto1.jpg" alt="Third slide">
-                      <img class="d-block w-100 col-2" style="z-index: 2; position: absolute; top: 38%; left: 10%;" src="/webroot/img/<?php echo $recomendados_top[2]['portada'] ?>" alt="Third slide">
+                      <a href="/libro/ver?id=<?php echo $recomendados_top[2]['idlibro'] ?>">
+                          <img class="d-block w-100" style="z-index: 1; background-image: url(/webroot/img/menu/foto1.jpg);" src="/webroot/img/menu/foto1.jpg" alt="Third slide">
+                          <img class="d-block w-100 col-2" style="z-index: 2; position: absolute; top: 38%; left: 10%;" src="/webroot/img/<?php echo $recomendados_top[2]['portada'] ?>" alt="Third slide">
+                      </a>
                       <h1 class="col-7" style="z-index: 2; position: absolute; top: 45%; left: 30%; ">"<?php echo $recomendados_top[2]['titulo_libro'] ?>"</h1>
                   </div>
               </div>
@@ -54,16 +60,21 @@
 
       <div style=" position: relative; margin-left: auto; margin-right: auto; width: 55em">
           <h1 style="text-align: center;">Querido Lector</h1>
+          </br>
+          <h5 style="text-align: justify;">Estamos muy agradecidos con ustedes por dar una oportunidad a nuestra libreria Don Gato,
+              nos complace anunciar que oficialmente tienen las puertas abiertas para adentrarse en el mundo más bonito de todos: la lectura en físico.
+          </h5>
+          </br>
 
-          <h5 style="text-align: justify;">Estamos muy agradecidos con ustedes por dar una oportunidad a nuestra libreria Don Gato, nos complace anunciar que oficial tienen las puertas abiertas para adentrarse en el mundo más bonito de todos, la lectura. Volviendo a la lectura en físico, que tantas aventuras nos ha dado y nos dará.</h6>
-
-            <h5 style="text-align: justify;">Librería Don Gato siempre ha estado a favor de apoyar a la literatura, se debe tener criterio propio para separar los buenos libros de los malos, y a la vez lograr que el público sienta interés por la literatura.
-Por lo que nuestro objetivo es crear una página web original, que llame la atención y que cree oportunidades para que más gente desee leer.
-</h5>
-
-<h5 style="text-align: justify; padding-bottom: 10px;">
-El objetivo principal es el comercio online de libros manteniendo la calidad de los libros vendidos para ofrecer la mejor experiencia a los usuarios.
-</h5>
+          <h5 style="text-align: justify;">
+              Librería Don Gato siempre ha estado a favor de apoyar a la literatura y a la vez lograr que el público sienta interés por la literatura.
+              Por lo que nuestro objetivo es crear una página web
+              original, que llame la atención y que cree oportunidades para que más gente desee leer.
+          </h5>
+          </br>
+          <h5 style="text-align: justify; padding-bottom: 10px;">
+              El objetivo principal es el comercio online de libros para poder ofrecer la mejor experiencia a los usuarios.
+          </h5>
 
       </div>
 
@@ -81,7 +92,7 @@ El objetivo principal es el comercio online de libros manteniendo la calidad de 
                   </div>
                   <div class="row pt-4 pb-4" style="background-color: #FC896F;">
                       <div class="col-2"></div>
-                      <h5 class="col-2" style="color: #434140; padding-top: 6px;"> <?php echo $recomendados_bot[0]['precio'] ?>€</h5>
+                      <h5 class="col-2" style="color: #434140; padding-top: 6px;"> <?php echo number_format((float)$recomendados_bot[0]['precio'], 2) ?>€</h5>
                       <div class="col-2"></div>
                       <div class="col-4">
                           <a type="button" class="float-right btn btn-outline-dark" href="/libro/ver?id=<?php echo $recomendados_bot[0]['idlibro'] ?>">
@@ -99,7 +110,7 @@ El objetivo principal es el comercio online de libros manteniendo la calidad de 
                   </div>
                   <div class="row pt-4 pb-4" style="background-color: #FC896F;">
                       <div class="col-2"></div>
-                      <h5 class="col-2" style="color: #434140; padding-top: 6px;"> <?php echo $recomendados_bot[1]['precio'] ?>€</h5>
+                      <h5 class="col-2" style="color: #434140; padding-top: 6px;"> <?php echo number_format((float)$recomendados_bot[1]['precio'], 2) ?>€</h5>
                       <div class="col-2"></div>
                       <div class="col-4">
                           <a type="button" class="float-right btn btn-outline-dark" href="/libro/ver?id=<?php echo $recomendados_bot[1]['idlibro'] ?>">
@@ -118,7 +129,7 @@ El objetivo principal es el comercio online de libros manteniendo la calidad de 
                   </div>
                   <div class="row pt-4 pb-4" style="background-color: #FC896F;">
                       <div class="col-2"></div>
-                      <h5 class="col-2" style="color: #434140; padding-top: 6px;"> <?php echo $recomendados_bot[2]['precio'] ?>€</h5>
+                      <h5 class="col-2" style="color: #434140; padding-top: 6px;"> <?php echo number_format((float)$recomendados_bot[2]['precio'], 2) ?>€</h5>
                       <div class="col-2"></div>
                       <div class="col-4">
                           <a type="button" class="float-right btn btn-outline-dark" href="/libro/ver?id=<?php echo $recomendados_bot[2]['idlibro'] ?>">

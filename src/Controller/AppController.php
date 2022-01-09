@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -14,6 +15,7 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
@@ -43,20 +45,20 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        
+
         $idUsu = $this->request->getSession()->read("idusuario");
         //no funciona con el isset
-        if($idUsu === null){
+        if ($idUsu === null) {
             $this->request->getSession()->write("idusuario", "");
         }
-        
+
+        if ($idUsu === null) {
+            $this->request->getSession()->write("carrito", []);
+        }
         /*
          * Enable the following component for recommended CakePHP form protection settings.
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
     }
-
-
-
 }

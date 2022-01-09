@@ -1,8 +1,8 @@
-<?php foreach ($this->request->getSession()->read('busqueda') as $numero => $informacion) : ?>
+<?php foreach ($busqueda as $numero => $informacion) : ?>
     <div class="row" style="text-align: center; padding-top: 2%;">
 
         <div class="col-sm-3 image-container">
-            <a href="#"><img src="/webroot/img/<?php echo $informacion['portada'] ?>" alt="Logo" class="col-xs-12 col-md-12"></a>
+            <img src="/webroot/img/<?php echo $informacion['portada'] ?>" alt="Logo" class="col-xs-12 col-md-12">
         </div>
 
         <div class="col-sm-8" style="background-color: #FC896F; border-radius: 15px;">

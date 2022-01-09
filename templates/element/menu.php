@@ -38,7 +38,7 @@
                                 <li><a href="/usuario/add"><i class="fas fa-user-cog"></i> Agregar usuario</a></li>
                                 <li><a href="/usuario/index"> <i class="fas fa-users-cog"></i> Usuarios</a></li>
                             <?php else : ?>
-                                <li><a href="#"> <i class="fas fa-box-open"></i> Mis pedidos</a></li>
+                                <li><a href="/usuario/misPedidos"> <i class="fas fa-box-open"></i> Mis pedidos</a></li>
                             <?php endif; ?>
 
                             <li><a href="/usuario/cerrarSesion"> <i class="fas fa-door-open"></i> Cerrar sesion</a></li>
@@ -64,7 +64,7 @@
             </ul>
         </div>
         <div class="col-md-1 col-s-12 d-flex justify-content-center align-items-center">
-            <a style="margin-top: 5%; margin-bottom: 5%; margin-left:25%; padding:10px 20px;" type="button" class="btn btn-outline-dark" href="#">
+            <a style="margin-top: 5%; margin-bottom: 5%; margin-left:25%; padding:10px 20px;" type="button" class="btn btn-outline-dark" href="/usuario/carrito">
                 <i class="fas fa-shopping-cart" style="padding-right: 5px;"></i><span> Carrito</span></a>
         </div>
     </div>

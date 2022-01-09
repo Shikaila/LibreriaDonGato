@@ -25,25 +25,44 @@ class LibroController extends AppController
         $this->set(compact('libro'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Libro id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $libro = $this->Libro->get($id, [
-            'contain' => ['Categoria', 'Pedido'],
-        ]);
 
-        $this->set(compact('libro'));
+    public function subirComentario(){
+        $id_libro = $this->request->getQuery("idlibro");
+        $id_usuario =$this->request->getQuery("idusuario");
+        
+        if ($this->request->is('post')) {
+
+            $valor = $this->request->getData();
+            if ($valor['comentario'] !== "" && isset($valor['valoracion'])) {
+                $connection = ConnectionManager::get('default');
+                $connection->execute('INSERT INTO comentario(id_usuario,id_libro,texto_comentario,valoracion) 
+                                        VALUES (:idu,:idl,:com,:val)', ['idu' => $id_usuario,'idl' => $id_libro,'com' => $valor['comentario'],
+                                        'val' => $valor['valoracion']]);
+                $this->Flash->success('Comentario Añadido');
+                
+            }else{
+                $this->Flash->error('Mal realizado el comentario');
+            }
+            
+            $url = "/libro/ver?id=".$id_libro;
+            return $this->redirect($url);
+
+        }
+        
+
     }
 
     public function ver(){
         $id = $this->request->getQuery("id");
-        dd($id);
+        $connection = ConnectionManager::get('default');
+        //selecciona todos los parámetros del libro con :id y se lo pasamos con $id
+        $libro = $connection->execute('SELECT * FROM libro inner join autor on (libro.id_autor = autor.idautor)  where idlibro = :id', ['id' => $id])->fetchAll('assoc');
+        $libro = $libro[0];
+        $categoria = $connection->execute('SELECT * FROM categoria_libro inner join categoria on (idcategoria = id_categoria) where id_libro = :id', ['id' => $id])->fetchAll('assoc');
+        $comentarios = $connection->execute('SELECT * FROM comentario inner join usuario on (id_usuario = idusuario) where :id = id_libro', ['id' => $id])->fetchAll('assoc');
+        
+        $this->set(compact('libro', 'categoria', 'comentarios'));
+
     }
     
     public function busqueda()
@@ -51,10 +70,10 @@ class LibroController extends AppController
         $busquedas = $this->request->getQuery("busqueda");
         $busquedas = '%' . strtoupper($busquedas) . '%';
         $connection = ConnectionManager::get('default');
-        $results = $connection->execute('SELECT * FROM libreria.libro inner join autor on (libro.id_autor = autor.idautor) 
-                                         where (UPPER(titulo_libro) LIKE :tit or UPPER(nombre) LIKE :tit);', ['tit' => $busquedas])->fetchAll('assoc');
+        $busqueda = $connection->execute('SELECT * FROM libro inner join autor on (libro.id_autor = autor.idautor) 
+                                         where (UPPER(titulo_libro) LIKE :busquedas or UPPER(nombre) LIKE :busquedas);', ['busquedas' => $busquedas])->fetchAll('assoc');
         
-        $this->request->getSession()->write("busqueda", $results);
+        $this->set(compact("busqueda"));
     }
     /**
      * Add method
@@ -65,32 +84,6 @@ class LibroController extends AppController
     {
         $libro = $this->Libro->newEmptyEntity();
         if ($this->request->is('post')) {
-            $libro = $this->Libro->patchEntity($libro, $this->request->getData());
-            if ($this->Libro->save($libro)) {
-                $this->Flash->success(__('The libro has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The libro could not be saved. Please, try again.'));
-        }
-        $categoria = $this->Libro->Categoria->find('list', ['limit' => 200])->all();
-        $pedido = $this->Libro->Pedido->find('list', ['limit' => 200])->all();
-        $this->set(compact('libro', 'categoria', 'pedido'));
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Libro id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $libro = $this->Libro->get($id, [
-            'contain' => ['Categoria', 'Pedido'],
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
             $libro = $this->Libro->patchEntity($libro, $this->request->getData());
             if ($this->Libro->save($libro)) {
                 $this->Flash->success(__('The libro has been saved.'));
