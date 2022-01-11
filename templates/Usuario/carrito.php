@@ -34,7 +34,8 @@
         <?php endif ?>
     <?php endforeach; ?>
 
-    <?php if (count($this->request->getSession()->read("carrito"))>=2 ) : ?>
+    <?php if (count($this->request->getSession()->read("carrito"))>=2
+     ) : ?>
         <button style="width: 180px; height: 40px; margin-left: 75%; margin-top: 4%; margin-bottom: 3%;" type="submit" class="btn btn-outline-dark">
             <i class="fas fa-shopping-bag"></i> Comprar</button>
     <?php else : ?>

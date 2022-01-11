@@ -58,9 +58,9 @@
         <!-- centrado -->
         <div class="col-xs-12 col-md-4 ">
             <ul style="margin-top:1%; margin-bottom: 1%;" class="navbot d-flex justify-content-center justify-content-around">
-                <li><a  href="#"><i class="fas fa-hat-wizard"></i> Fantasía</a></li>
-                <li><a  href="#"><i class="fas fa-child"></i> Juveniles</a></li>
-                <li><a  href="#"><i class="far fa-kiss-wink-heart"></i> Romance</a></li>
+                <li><a  href="/libro/busquedaCategoria?categoria=1"><i class="fas fa-hat-wizard"></i> Fantasía</a></li>
+                <li><a  href="/libro/busquedaCategoria?categoria=2"><i class="fas fa-child"></i> Juveniles</a></li>
+                <li><a  href="/libro/busquedaCategoria?categoria=3"><i class="far fa-kiss-wink-heart"></i> Romance</a></li>
             </ul>
         </div>
         <?php if ($this->request->getSession()->read("idusuario") !== "") : ?>

@@ -23,18 +23,13 @@
                     <div class="row" style="margin-bottom: 15px;">
                         <div class="container">
                             <?php foreach ($categoria as $numero => $categoria_inf) : ?>
-
-                                <a style="margin-right: 4%; margin-top: 2%;" type="button" class="btn btn-outline-dark float-left" href="#">
+                                <a style="margin-right: 4%; margin-top: 2%;" type="button" class="btn btn-outline-dark float-left" href="/libro/busquedaCategoria?categoria=<?php echo $categoria_inf['idcategoria'] ?>">
                                     <span><?php echo $categoria_inf['nombre'] ?></span></a>
 
                             <?php endforeach; ?>
-                            <!-- -webkit-line-clamp es para eliminar parte del texto
-            -webkit-box-orient al igual que eso indica en que direccion debe hacerse -->
                         </div>
                     </div>
-                    <p style="
-                margin-top: 1%;
-                padding-right:2%; text-align: left;">
+                    <p style="margin-top: 1%; padding-right:2%; text-align: left;">
                         <?php echo $libro['resumen'] ?>
                     </p>
                 </div>
@@ -141,8 +136,10 @@
                                     </div>
                                 </div>
                                 <div class="col-12" style="overflow: auto;">
-                                <div class="row" style="padding-bottom: 1%;">
-                                    <h><p> <?php echo $comentario['texto_comentario']; ?> </p></h>
+                                    <div class="row" style="padding-bottom: 1%;">
+                                        <h>
+                                            <p> <?php echo $comentario['texto_comentario']; ?> </p>
+                                        </h>
                                     </div>
                                 </div>
                             </div>
