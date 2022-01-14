@@ -64,7 +64,13 @@ class LibroController extends AppController
 
         $this->set(compact('libro', 'categoria', 'comentarios'));
     }
+    public function catalogo()
+    {
+        $connection = ConnectionManager::get('default');
+        $busqueda = $connection->execute('SELECT * FROM libro inner join autor on (libro.id_autor = autor.idautor)', [])->fetchAll('assoc');
 
+        $this->set(compact("busqueda"));
+    }
     public function busqueda()
     {
         $busquedas = $this->request->getQuery("busqueda");
@@ -85,6 +91,4 @@ class LibroController extends AppController
         $this->set(compact("busqueda"));
         $this->render('busqueda');
     }
-
-
 }
