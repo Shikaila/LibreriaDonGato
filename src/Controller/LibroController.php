@@ -85,45 +85,6 @@ class LibroController extends AppController
         $this->set(compact("busqueda"));
         $this->render('busqueda');
     }
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $libro = $this->Libro->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $libro = $this->Libro->patchEntity($libro, $this->request->getData());
-            if ($this->Libro->save($libro)) {
-                $this->Flash->success(__('The libro has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The libro could not be saved. Please, try again.'));
-        }
-        $categoria = $this->Libro->Categoria->find('list', ['limit' => 200])->all();
-        $pedido = $this->Libro->Pedido->find('list', ['limit' => 200])->all();
-        $this->set(compact('libro', 'categoria', 'pedido'));
-    }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Libro id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $libro = $this->Libro->get($id);
-        if ($this->Libro->delete($libro)) {
-            $this->Flash->success(__('The libro has been deleted.'));
-        } else {
-            $this->Flash->error(__('The libro could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect(['action' => 'index']);
-    }
 }

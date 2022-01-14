@@ -7,7 +7,7 @@
         <div class="col-xl-3 col-lg-4 col-md-12 col-xs-12">
             <a href="/"><img src="/webroot/img/menu/logonombre.png" alt="Logo" class="col-xs-12 col-md-12"></a>
         </div>
-        <div class=" col-lg-3 col-md-12 col-sm-12 d-flex justify-content-center align-items-center" >
+        <div class=" col-lg-3 col-md-12 col-sm-12 d-flex justify-content-center align-items-center">
 
             <form class="col-12" method="get" action="/libro/busqueda">
                 <div class="input-group rounded">
@@ -33,14 +33,13 @@
                     <li><a style="border-radius: 5px; text-align: center; width: 160px;"><i class="fas fa-cat" style="padding-right: 5px;"></i>Hola,
                             <?php echo $this->request->getSession()->read("nombre"); ?></a>
                         <ul>
-                            <li><a href="#"> <i class="fas fa-paw"></i> Perfil</a></li>
+                            <li><a href="/Usuario/edit/<?php echo $this->request->getSession()->read("idusuario"); ?>"> <i class="fas fa-paw"></i> Perfil</a></li>
                             <?php if ($this->request->getSession()->read("roles") === 1) : ?>
                                 <li><a href="/usuario/add"><i class="fas fa-user-cog"></i> Agregar usuario</a></li>
                                 <li><a href="/usuario/index"> <i class="fas fa-users-cog"></i> Usuarios</a></li>
-                            <?php else : ?>
-                                <li><a href="/usuario/misPedidos"> <i class="fas fa-box-open"></i> Mis pedidos</a></li>
+                                
                             <?php endif; ?>
-
+                            <li><a href="/usuario/misPedidos"> <i class="fas fa-box-open"></i> Mis pedidos</a></li>
                             <li><a href="/usuario/cerrarSesion"> <i class="fas fa-door-open"></i> Cerrar sesion</a></li>
                         </ul>
                     </li>
@@ -51,23 +50,24 @@
 
     <div class="row" style=" background-color: #FC896F;">
         <!-- Parte de abajo menu libros, espacio para que se centre -->
-        <div class="col-md-3 col-xs-0 d-flex ">
+        <div class="col-md-1 col-xs-0 d-flex ">
         </div>
         <div class="col-md-1 col-xs-12 d-flex ">
         </div>
         <!-- centrado -->
-        <div class="col-xs-12 col-md-4 ">
+        <div class="col-xs-12 col-md-6 ">
             <ul style="margin-top:1%; margin-bottom: 1%;" class="navbot d-flex justify-content-center justify-content-around">
-                <li><a  href="/libro/busquedaCategoria?categoria=1"><i class="fas fa-hat-wizard"></i> Fantasía</a></li>
-                <li><a  href="/libro/busquedaCategoria?categoria=2"><i class="fas fa-child"></i> Juveniles</a></li>
-                <li><a  href="/libro/busquedaCategoria?categoria=3"><i class="far fa-kiss-wink-heart"></i> Romance</a></li>
+                <li><a href="/libro/catalogo"><i class="fas fa-list"></i> Todos los libros</a></li>
+                <li><a href="/libro/busquedaCategoria?categoria=1"><i class="fas fa-hat-wizard"></i> Fantasía</a></li>
+                <li><a href="/libro/busquedaCategoria?categoria=2"><i class="fas fa-child"></i> Juveniles</a></li>
+                <li><a href="/libro/busquedaCategoria?categoria=3"><i class="far fa-kiss-wink-heart"></i> Romance</a></li>
             </ul>
         </div>
         <?php if ($this->request->getSession()->read("idusuario") !== "") : ?>
-        <div class="col-md-1 col-s-12 d-flex justify-content-center align-items-center">
-            <a style="margin-top: 5%; margin-bottom: 5%; margin-left:25%; padding:10px 20px;" type="button" class="btn btn-outline-dark" href="/usuario/carrito">
-                <i class="fas fa-shopping-cart" style="padding-right: 5px;"></i><span> Carrito</span></a>
-        </div>
+            <div class="col-md-1 col-s-12 d-flex justify-content-center align-items-center">
+                <a style="margin-top: 5%; margin-bottom: 5%; margin-left:25%; padding:10px 20px;" type="button" class="btn btn-outline-dark" href="/usuario/carrito">
+                    <i class="fas fa-shopping-cart" style="padding-right: 5px;"></i><span> Carrito</span></a>
+            </div>
         <?php endif; ?>
 
     </div>

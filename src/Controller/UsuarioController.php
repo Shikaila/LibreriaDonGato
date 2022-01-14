@@ -35,22 +35,6 @@ class UsuarioController extends AppController
     {
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Usuario id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $usuario = $this->Usuario->get($id, [
-            'contain' => [],
-        ]);
-
-        $this->set(compact('usuario'));
-    }
-
     public function confirmadoPedido()
     {
         if ($this->request->is('post')) {
@@ -76,7 +60,7 @@ class UsuarioController extends AppController
             $result = $connection->execute('INSERT INTO pedido(id_usuario,fecha,direccion_envio,total) 
                                         VALUES (:idu,:fecha,:dir,:total)', [
                 'idu' => $this->request->getSession()->read("idusuario"),
-                'fecha' => $fecha, 
+                'fecha' => $fecha,
                 'dir' => $direccion,
                 'total' => $this->request->getSession()->read("carrito")['total']
             ]);
@@ -92,9 +76,10 @@ class UsuarioController extends AppController
                 if ($numero != 'total') {
                     $connection->execute('INSERT INTO libro_pedido(id_libro, id_pedido, cantidad) 
                                         VALUES (:idl,:idp, :cant)', [
-                'idl' => $informacion['libro']['idlibro'],
-                'idp' => $idpedido,
-                'cant' => $informacion['cantidad']]);
+                        'idl' => $informacion['libro']['idlibro'],
+                        'idp' => $idpedido,
+                        'cant' => $informacion['cantidad']
+                    ]);
                 }
             }
 
@@ -102,7 +87,6 @@ class UsuarioController extends AppController
             $carrito = $this->request->getSession()->write("carrito", $carrito);
             $this->Flash->success('Compra Realizada');
             return $this->redirect("/home");
-
         }
     }
 
@@ -144,13 +128,16 @@ class UsuarioController extends AppController
         return $this->redirect('/usuario/carrito');
     }
 
-    public function misPedidos(){
+    public function misPedidos()
+    {
 
         $connection = ConnectionManager::get('default');
-        $pedido = $connection->execute('SELECT * FROM pedido 
+        $pedidos = $connection->execute('SELECT * FROM pedido 
+        INNER JOIN libro_pedido ON id_pedido = idpedido 
+        INNER JOIN libro ON id_libro = idlibro
+        inner join autor on libro.id_autor = autor.idautor
         where id_usuario = :id ORDER BY idpedido DESC', ['id' => $this->request->getSession()->read("idusuario")])->fetchAll('assoc');
-        dd($pedido);
-
+        $this->set(compact('pedidos'));
     }
 
 
@@ -161,12 +148,11 @@ class UsuarioController extends AppController
             $datos = $this->request->getData();
             $carrito = $this->request->getSession()->read("carrito");
             foreach ($carrito as $numero => $informacion) {
-                
+
                 if ($numero != 'total') {
-                    
+
                     $total += $informacion['libro']['precio'] * $datos[$numero];
                     $carrito[$numero]['cantidad'] = $datos[$numero];
-                    
                 }
             }
             $carrito['total'] = $total;
@@ -175,7 +161,7 @@ class UsuarioController extends AppController
         $idusuario = $this->request->getSession()->read("idusuario");
         $usuario = $this->Usuario->find('all', [
             'conditions' => [
-                'idusuario' =>$idusuario
+                'idusuario' => $idusuario
             ],
         ])->toArray();
         $this->set(compact('usuario'));
@@ -212,35 +198,10 @@ class UsuarioController extends AppController
         $this->request->getSession()->write("idusuario", "");
         $this->request->getSession()->write("roles", "");
         $this->request->getSession()->write("nombre", "");
+        $this->request->getSession()->write("carrito", []);
         $this->redirect("/home");
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $usuario = $this->Usuario->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $usuario = $this->Usuario->patchEntity($usuario, $this->request->getData());
-            try {
-                if ($this->Usuario->save($usuario)) {
-                    $this->Flash->success(__('El usuario se ha guardado.'));
-                    if ($this->request->getSession()->read("roles") === 1) {
-                        return $this->redirect(['action' => 'index']);
-                    } else {
-                        return $this->redirect("/home");
-                    }
-                }
-                $this->Flash->error(('El usuario no se pudo guardar, por favor vuelvalo a intentar.'));
-            } catch (\Exception $e) {
-                $this->Flash->error(('El usuario no se pudo guardar, por favor vuelvalo a intentar.'));
-            }
-        }
-        $this->set(compact('usuario'));
-    }
 
     /**
      * Edit method
@@ -256,11 +217,15 @@ class UsuarioController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $usuario = $this->Usuario->patchEntity($usuario, $this->request->getData());
-            if ($this->Usuario->save($usuario)) {
-                $this->Flash->success(__('The usuario has been saved.'));
-                return $this->redirect(['action' => 'index']);
+            if ($this->request->getSession()->read("idusuario") === $usuario['idusuario']) {
+                $this->request->getSession()->write("nombre", $usuario['nombre']);
             }
-            $this->Flash->error(__('The usuario could not be saved. Please, try again.'));
+            if ($this->Usuario->save($usuario)) {
+                $this->Flash->success(__('El usuario se ha guardado correctamente.'));
+                return $this->redirect('/home');
+            }
+
+            $this->Flash->error(__('No se ha podido guardar el usuario, intentelo de nuevo.'));
         }
         $this->set(compact('usuario'));
     }

@@ -77,14 +77,14 @@
                             ],
                             'placeholder' => 'ejemplo@gmail.com'
                         ]);
-                        echo 'Contraseña usuario ';
+                        echo 'Contraseña ';
                         echo $this->Form->password('contrasena', [
                             'placeholder' => 'Introduzca su contraseña',
                         ]);
                         ?>
                     </fieldset>
                     </br>
-                    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Crear usuario </button>
+                    <button type="submit" class="btn btn-dark"><i class="far fa-save"></i> Crear usuario </button>
                     <?= $this->Form->end(); ?>
                     </br>
                 </div>
