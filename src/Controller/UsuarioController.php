@@ -167,6 +167,28 @@ class UsuarioController extends AppController
         $this->set(compact('usuario'));
     }
 
+    public function add()
+    {
+        $usuario = $this->Usuario->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $usuario = $this->Usuario->patchEntity($usuario, $this->request->getData());
+            try {
+                if ($this->Usuario->save($usuario)) {
+                    $this->Flash->success(__('El usuario se ha guardado.'));
+                    if ($this->request->getSession()->read("roles") === 1) {
+                        return $this->redirect(['action' => 'index']);
+                    } else {
+                        return $this->redirect("/home");
+                    }
+                }
+                $this->Flash->error(('El usuario no se pudo guardar, por favor vuelvalo a intentar.'));
+            } catch (\Exception $e) {
+                $this->Flash->error(('El usuario no se pudo guardar, por favor vuelvalo a intentar.'));
+            }
+        }
+        $this->set(compact('usuario'));
+    }
+
     public function anhadirCarro()
     {
         $id = $this->request->getQuery("id");
